@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            align-items: center;
+        }
+        
+        button{
+            background-color: white;
+            border: none;
+            box-shadow: 0 1px 3px gray;
+            height: 50px;
+            width: 50px;
+            font-size: 25px;
+            border-radius: 5px;
+            margin: 0.5px;
+        }
+        .equal-button{
+            background-color: rgb(110, 36, 36);
+            color: white;
+            font-size: 25px;
+        }
+        .main-body{
+            background-color: rgb(245, 243, 240);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .num-button{
+            margin: 2px;
+            
+        }
+        .input-box{
+            width: 220px;
+            height: 40px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 2px 10px;
+            font-size: 20px;
+            text-align: right;
+            border-color: gray;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(254, 242, 242);
+            transition: 0.5s;
+        }
+        .equal-button:hover{
+            background-color: rgb(110, 56, 49);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-body">
+        
+        <input class="input-box" type="text" id="display" readonly>
+        
+        <div class="num-button">
+            <button onclick="clearAll()">C</button>
+            <button onclick="clearEntry()">CE</button>
+            <button onclick="appendValue('%')">%</button>
+            <button onclick="appendValue('/')">/</button>
+        </div>
+        <div class="num-button">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('*')">x</button>
+        </div>
+        <div class="num-button">
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+        </div>
+        <div class="num-button">
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('+')">+</button>
+        </div>
+        <div class="num-button">
+            <button onclick="toggleSign()">+/- </button>
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button class="equal-button" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script>
+            const display = document.getElementById("display");
+
+            function appendValue(value){
+                display.value +=value;
+            }
+            function clearAll(){
+                display.value = "";
+            }
+            function clearEntry(){
+                display.value = display.value.slice(0, -1);
+            }
+            function calculate(){
+                try{
+                    display.value = eval(display.value);
+                }catch{
+                    display.value = "Error";
+                }
+
+            }
+
+            function toggleSign(){
+                if(display.value){
+                    display.value = display.value.startsWith("-")
+                        ? display.value.slice(1)
+                        : '-' + display.value;
+                }
+            }
+    </script>
+</body>
+</html>
