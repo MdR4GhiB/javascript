@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: aliceblue;
+        }
+
+        .progress-bar{
+            width: 0%;
+            height: 100%;
+            text-align: center;
+            background-color: red;
+            transition: 0.3s;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar" id="progress">0%</div>
+    </div>
+    <button onclick="startProgress()">Start</button>
+
+    <script>
+        let progress = 0;
+
+        function startProgress(){
+            if(progress < 100){
+                progress += 10;
+                let bar = document.getElementById('progress');
+                bar.style.width = progress + "%"
+                bar.innerHTML = progress + "%"
+            }
+        }
+    </script>
+</body>
+
+</html>

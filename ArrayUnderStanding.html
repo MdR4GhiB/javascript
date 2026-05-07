@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Sports Game List</h1>
+        <input type="text" placeholder="Enter Sports name" class="input-js">
+        <button
+            class="add-btn"
+            onclick="addSportList()"
+        >Add</button>
+        <div class="list"></div>
+    </div>
+
+    <script>
+        // Create a array that store the sports
+        const sportsList = [];
+
+        // Function To Add Sports in list
+        function addSportList(){
+            const inputElement = document.querySelector('.input-js');
+            const sports = inputElement.value;
+            sportsList.push(sports);
+
+            // console.log(sportsList);
+            renderSports();
+            inputElement.value = '';
+        }
+
+        // Function For Render the list on html page
+
+        function renderSports(){
+            let html = '';
+            
+            // Using for loop to go through array one by one
+            for(i = 0; i < sportsList.length; i++){
+                html += `
+                    <p>
+                        ${sportsList[i]}
+                        <button
+                            onclick="
+                                sportsList.splice(${i}, 1);
+                                renderSports();
+                            "
+                        >Clear
+                        </button>    
+                    </p>
+                `
+            }
+
+            document.querySelector('.list').innerHTML = html;
+        }
+
+
+    </script>
+</body>
+</html>

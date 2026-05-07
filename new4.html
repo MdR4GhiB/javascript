@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: aqua;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .start-screen{
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .next-screen{
+            background-color: green;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+        .final-screen{
+            background-color: blue;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="start-screen">
+            <button class="start-btn" onclick="showScreen('next')">Start</button>
+        </div>
+
+        <div class="next-screen">
+            <button class="next-btn" onclick="showScreen('final')">Go To next screen</button>
+        </div>
+
+        <div class="final-screen">
+            <button class="reset-button" onclick="showScreen('start')">
+                Reset Screen
+            </button>
+        </div>
+    </div>
+    <script>
+        const startScreen = document.querySelector('.start-screen');
+        const nextScreen = document.querySelector('.next-screen');
+        const finalScreen = document.querySelector('.final-screen');
+
+       /* function goToNextScreen(){
+            startScreen.style.display = "none";
+            nextScreen.style.display = "flex";
+            finalScreen.style.display = "none";
+        }
+
+        function gofinalScreen(){
+            startScreen.style.display = "none";
+            nextScreen.style.display = "none";
+            finalScreen.style.display = "flex";
+        }
+
+        function goToStartScreen(){
+            startScreen.style.display = "flex";
+            nextScreen.style.display = "none";
+            finalScreen.style.display = "none";
+        }
+        */
+
+        // Here I am using only one fuction insted of many function
+        function showScreen(screen){
+            startScreen.style.display = "none";
+            nextScreen.style.display = "none";
+            finalScreen.style.display = "none";
+
+            if(screen === 'start'){
+                startScreen.style.display = "flex";
+            }
+            else if(screen === 'next'){
+                nextScreen.style.display = "flex";
+            }
+            else if(screen === 'final'){
+                finalScreen.style.display = "flex";
+            }
+        }
+
+    </script>
+</body>
+</html>

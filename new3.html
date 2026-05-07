@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .container{
+            width: 300px;
+            height: 20px;
+            margin: 10px;
+            background-color: lightcyan;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .progress-bar{
+            width: 10%;
+            height: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            transition: 0.3s;
+
+        }
+
+        button{
+            height: 30px;
+            margin: 10px;
+            background-color: green;
+            border: none;
+            color: white;
+            border-radius: 20px;
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar" id="progress">
+           <span id="total"></span>
+        </div>
+    </div>
+    <button onclick="startProgress()">Start</button>
+
+    <script>
+        let current = 1;
+        const total = 20;
+
+        function startProgress(){
+
+            if(current < total){
+                current += 1;
+                let percentage = (current/total) * 100;
+                let progressBar = document.getElementById('progress');
+
+                progressBar.style.width = percentage + "%";
+                progressBar.innerHTML = `<span id="total"></span>`;
+            }
+        }
+    </script>
+</body>
+</html>

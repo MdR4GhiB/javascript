@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz and its question</title>
+    <style>
+        body{
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container{
+            background-color: white;
+            padding: 20px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin: 20px;
+        }
+        .stats{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You Question will appear here</h1>
+        <div class="stats">
+            <p><span class="min-value">1</span> of <span class="max-value">10</span></p>
+            <p>Score <span class="score"></span></p>
+        </div>
+        <div class="answer-box">
+            <!-- Answer will appear heare -->
+        </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Answer The following question</h1>
+        <p>Who is complete 100 century in internation cricket?</p>
+        <input type="text" placeholder="Enter you answer" class="input-js">
+        <button class="submit-answer" onclick="showResult()">Submit</button>
+        <p class="answer-b"></p>
+    </div>
+    <script>
+
+        const answer = document.querySelector('.input-js');
+        const output = document.querySelector('.answer-b');
+
+        function showResult(){
+            if (answer.value.trim() === "Sachin Tendulkar"){
+                output.innerHTML = `You give right answer`;
+            }
+            else{
+                output.innerHTML = `Oh! wrong answer the correct answer is Sachin Tendulkar`;
+            }
+        }
+
+        const quizQuestion = [
+            {
+                question: "Who is the father of Computer?",
+                answers: [
+                    {text: "Charles Babbage", correct: true},
+                    {text: "Elon Musk", correct: false},
+                    {text: "Bill Gates", correct: false},
+                    {text: "Mark Zuckerberg", correct: false}
+                ]
+            },
+
+            {
+                question: "HTML stands for?",
+                answers: [
+                    {text: "Hyper Text Markup Language", correct: true},
+                    {text: "Home Tool Markup Language", correct: false},
+                    {text: "Hyperlinks Text Language", correct: false},
+                    {text: "Hyper Tool Multi Language", correct: false}
+                ]
+            }
+        ];
+
+        const questionElement = document.querySelector('h1');
+        const answerBox = document.querySelector('.answer-box');
+        const scoreElement = document.querySelector('.score');
+        const minValue = document.querySelector('.min-value');
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function showQuestion(){
+
+            answerBox.innerHTML = "";
+
+            let questionData = quizQuestion[currentQuestion];
+
+            questionElement.innerHTML = questionData.question;
+
+            minValue.innerHTML = currentQuestion + 1;
+
+            questionData.answers.forEach((answer) => {
+
+                const button = document.createElement('button');
+
+                button.innerHTML = answer.text;
+
+                button.style.display = "block";
+                button.style.margin = "10px 0";
+
+                answerBox.appendChild(button);
+
+                button.addEventListener('click', () => {
+
+                    if(answer.correct){
+                        score++;
+                        scoreElement.innerHTML = score;
+                    }
+
+                    currentQuestion++;
+
+                    if(currentQuestion < quizQuestion.length){
+                        showQuestion();
+                    }
+
+                    else{
+                        questionElement.innerHTML = "Quiz Finished";
+                        answerBox.innerHTML = "";
+                    }
+
+                });
+
+            });
+
+        }
+
+    showQuestion();
+</script>
+
+</body>
+</html>

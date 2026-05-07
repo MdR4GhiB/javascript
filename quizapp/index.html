@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Time</title>
+</head>
+<body>
+    <div class="container">
+        <div class="screen" id="start-screen">
+            <h1>Quiz Time</h1>
+            <p>Test of your knowledge for fun</p>
+            <button id="start-btn">Start Quiz</button>
+        </div>
+        <div class="screen" id="question-screen">
+            <div class="question-box">
+                <h1 class="question" id="question-text">Question appear here</h1>
+            </div>
+            <div class="stat-box">
+                <p>Question <span id="current-question">1</span id="max-question"> of 10</p>
+                <p>Score <span id="current-score">0</span></p>
+            </div>
+
+            <div class="answer-box" id="answer-box">
+                <!-- Answer appear here -->
+            </div>
+            <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    
+        <div class="screen" id="result-screen">
+            <h1>Quiz Result</h1>
+            <p>You Score <span id="total-score">O</span> Out of <span id="max-score">10</span></p>
+            <p id="result-msg"></p>
+            <button class="restart-btn" id="restart-btn" 
+                onclick="startQuiz()"
+            >Restart Quiz</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
