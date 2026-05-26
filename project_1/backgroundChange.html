@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Background Change</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        .button{
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            line-height: 100px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            border: solid black 2px;
+        }
+
+        /* ID Selectors */
+        #green{
+            background-color: green;
+        }
+
+        #red{
+            background-color: red;
+        }
+
+        #blue{
+            background-color: blue;
+        }
+
+        #orange{
+            background-color: orange;
+        }
+        
+        .reset{
+            background: green;
+            color: white;
+            padding: 5px 15px;
+            width: 48px;
+            cursor: pointer;
+            border: solid black 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Colour Switcher</h1>
+            <span class="button" id="green">Green</span>
+            <span class="button" id="red">Red</span>
+            <span class="button" id="blue">Blue</span>
+            <span class="button" id="orange">Orange</span>
+            <div class="reset">Reset</div>
+        <p>Click The colour box you can change the background of the page</p>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        const body = document.querySelector('body');
+        const reset = document.querySelector('.reset')
+
+        buttons.forEach(function(button){
+           console.log(button);
+
+           button.addEventListener('click', function(e){
+                if(e.target.id === 'green'){
+                    body.style.background = e.target.id;
+                }
+                if(e.target.id === 'red'){
+                    body.style.background = e.target.id;
+                }
+                if(e.target.id === 'blue'){
+                    body.style.background = e.target.id;
+                }
+                 if(e.target.id === 'orange'){
+                    body.style.background = e.target.id;
+                }
+           });
+        });
+
+        reset.addEventListener('click', function resetBg(){
+            body.style.background = 'white'
+        });
+    </script>
+</body>
+</html>

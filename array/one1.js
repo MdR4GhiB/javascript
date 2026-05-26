@@ -83,7 +83,7 @@ let city = [
         name:"Delhi",
         pin: 50000,
         weather: "mostly sunny",
-        motherToung: "mostly hindi"
+        motherToung: "mostly windi"
     },
     {
         name:"Hyderabad",
